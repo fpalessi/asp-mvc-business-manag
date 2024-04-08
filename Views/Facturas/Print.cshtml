@@ -1,0 +1,177 @@
+﻿@{
+    Layout = null;
+    decimal totalDecimal = (decimal)Model.Total; // Convertir Model.Total a decimal explícitamente
+    var iva = Math.Round(totalDecimal * 0.21m, 2); // Calcular el IVA redondeando a dos decimales
+    var subtotal = Math.Round(totalDecimal - iva, 2); // Calcular el subtotal redondeando a dos decimales
+}
+
+@model Factura
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factura Sandra Confecciones</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif !important;
+            -webkit-print-color-adjust: exact !important;
+            color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        body {
+            color: #404040;
+            margin: 0;
+            padding: 0;
+        }
+
+        table {
+            width: 100%;
+        }
+    </style>
+</head>
+<body style="color: #404040; margin: 0; padding: 0;">
+    <table border="0"
+           cellpadding="0"
+           cellspacing="0"
+           style="width: 100%;">
+        <tr>
+            <td style="padding-top: 20px; padding-left: 30px; padding-right: 30px;">
+                <table border="0"
+                       cellpadding="0"
+                       cellspacing="0"
+                       style="width: 100%;">
+                    <tr>
+                        <td style="padding-top: 12px; padding-bottom: 12px;">
+                            <h1 align="left"
+                                style="text-align: left; font-family: 'Poppins', sans-serif; margin: 0;">
+                                Sandra Confecciones
+                            </h1>
+                            <h4 align="left"
+                                style="text-align: left; font-family: 'Poppins', sans-serif; margin: 0;">
+                                Todo para el hogar
+                            </h4>
+                        </td>
+                        <td style="padding-top: 12px; padding-bottom: 12px;">
+                            <h1 align="right"
+                                style="text-align: right; font-family: 'Poppins', sans-serif; margin: 0;">
+                                Factura
+                            </h1>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-left: 30px; padding-right: 30px;">
+                <table border="0"
+                       cellpadding="0"
+                       cellspacing="0"
+                       style="width: 100%;">
+                    <tr>
+                        <td style="padding-top: 12px; padding-bottom: 12px; border-top: 1px solid #dee2e6; border-bottom: 1px solid #dee2e6;">
+                            <p style="font-family: 'Poppins', sans-serif;">
+                                <strong>Fecha</strong> @Model.Fecha
+                            </p>
+                        </td>
+                        <td style="padding-top: 12px; padding-bottom: 12px; border-top: 1px solid #dee2e6; border-bottom: 1px solid #dee2e6;">
+                            <p align="right"
+                               style="text-align: right; font-family: 'Poppins', sans-serif;">
+                                <strong>Factura Número:</strong> @Model.FacturaId
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-left: 30px; padding-right: 30px;">
+                <table border="0"
+                       cellpadding="0"
+                       cellspacing="0"
+                       style="width: 100%;">
+                    <tr>
+                        <td style="padding-top: 20px; padding-bottom: 20px;">
+                            <p style="font-family: 'Poppins', sans-serif; line-height: 2;">
+                                <strong style="display: block; margin-bottom: 5px;">Sandra Confecciones</strong>
+                                Sandra Pereiras Paz <br />
+                                Vigo, Pontevedra <br />
+                                Rúa de Pablo Iglesias 14 <br />
+                                TLF - 645902756
+                            </p>
+                        </td>
+                        <td style="padding-top: 20px; padding-bottom: 20px;">
+                            <p align="right"
+                               style="text-align: right; font-family: 'Poppins', sans-serif; line-height: 2;">
+                                <strong style="display: block; margin-bottom: 5px;">Cliente:</strong>
+                                @Model.Cliente.Nombre @Model.Cliente.Apellido <br />
+                                @Model.Cliente.Direccion <br />
+                                TLF - @Model.Cliente.Telefono
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-left: 30px; padding-right: 30px;">
+                <table border="0"
+                       cellpadding="0"
+                       cellspacing="0"
+                       style="width: 100%; border: 1px solid #dee2e6;">
+                    <thead>
+                        <tr>
+                            <th bgcolor="#f8f9fa" align="left" style="white-space: nowrap; padding: 12px; text-align: left; font-family: 'Poppins', sans-serif; border-bottom: 1px solid #dee2e6; background-color: #f8f9fa;-webkit-print-color-adjust: exact !important;color-adjust: exact !important;print-color-adjust: exact !important;">Descripción</th>
+                            <th bgcolor="#f8f9fa" align="left" style="white-space: nowrap; padding: 12px; text-align: left; font-family: 'Poppins', sans-serif; border-bottom: 1px solid #dee2e6; background-color: #f8f9fa;-webkit-print-color-adjust: exact !important;color-adjust: exact !important;print-color-adjust: exact !important;"></th>
+                            <th bgcolor="#f8f9fa" style="white-space: nowrap; padding: 12px; font-family: 'Poppins', sans-serif; border-bottom: 1px solid #dee2e6; background-color: #f8f9fa;-webkit-print-color-adjust: exact !important;color-adjust: exact !important;print-color-adjust: exact !important;"></th>
+                            <th bgcolor="#f8f9fa" style="white-space: nowrap; padding: 12px; font-family: 'Poppins', sans-serif; border-bottom: 1px solid #dee2e6; background-color: #f8f9fa;-webkit-print-color-adjust: exact !important;color-adjust: exact !important;print-color-adjust: exact !important;"></th>
+                            <th bgcolor="#f8f9fa" align="right" style="white-space: nowrap; padding: 12px; text-align: right; font-family: 'Poppins', sans-serif; border-bottom: 1px solid #dee2e6; background-color: #f8f9fa;-webkit-print-color-adjust: exact !important;color-adjust: exact !important;print-color-adjust: exact !important;">Coste</th>
+                        </tr>
+                    </thead>
+                    <tbody class="mt-5">
+                        <tr>
+                            <td align="left" style="padding: 12px; text-align: left; font-family: 'Poppins', sans-serif; border-bottom: 1px solid #dee2e6;">@Model.Descripcion</td>
+                            <td align="left" style="padding: 12px; text-align: left; font-family: 'Poppins', sans-serif; border-bottom: 1px solid #dee2e6; font-size: 14px;"></td>
+                            <td align="center" style="padding: 12px; text-align: center; font-family: 'Poppins', sans-serif; border-bottom: 1px solid #dee2e6;"></td>
+                            <td align="center" style="padding: 12px; text-align: center; font-family: 'Poppins', sans-serif; border-bottom: 1px solid #dee2e6;"></td>
+                            <td align="right" style="padding: 12px; text-align: right; font-family: 'Poppins', sans-serif; border-bottom: 1px solid #dee2e6;">@subtotal€</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td bgcolor="#f8f9fa" colspan="3" style="padding: 12px; border-bottom: 1px solid #dee2e6; background-color: #f8f9fa;-webkit-print-color-adjust: exact !important;color-adjust: exact !important;print-color-adjust: exact !important;"></td>
+                            <td bgcolor="#f8f9fa" align="right" style="padding: 12px; text-align: right; font-family: 'Poppins', sans-serif; border-bottom: 1px solid #dee2e6; background-color: #f8f9fa;-webkit-print-color-adjust: exact !important;color-adjust: exact !important;print-color-adjust: exact !important;">
+                                <strong style="white-space: nowrap;">Subtotal:</strong>
+                            </td>
+                            <td bgcolor="#f8f9fa" align="right" style="padding: 12px; text-align: right; font-family: 'Poppins', sans-serif; border-bottom: 1px solid #dee2e6; background-color: #f8f9fa;-webkit-print-color-adjust: exact !important;color-adjust: exact !important;print-color-adjust: exact !important;">@subtotal€</td>
+                        </tr>
+                        <tr>
+                            <td bgcolor="#f8f9fa" colspan="3" style="padding: 12px; border-bottom: 1px solid #dee2e6; background-color: #f8f9fa;-webkit-print-color-adjust: exact !important;color-adjust: exact !important;print-color-adjust: exact !important;"></td>
+                            <td bgcolor="#f8f9fa" align="right" style="padding: 12px; text-align: right; font-family: 'Poppins', sans-serif; border-bottom: 1px solid #dee2e6; background-color: #f8f9fa;-webkit-print-color-adjust: exact !important;color-adjust: exact !important;print-color-adjust: exact !important;">
+                                <strong style="white-space: nowrap;">IVA (21%):</strong>
+                            </td>
+                            <td bgcolor="#f8f9fa" align="right" style="padding: 12px; text-align: right; font-family: 'Poppins', sans-serif; border-bottom: 1px solid #dee2e6; background-color: #f8f9fa;-webkit-print-color-adjust: exact !important;color-adjust: exact !important;print-color-adjust: exact !important;">@iva€</td>
+                        </tr>
+                        <tr>
+                            <td bgcolor="#f8f9fa" colspan="3" style="padding: 12px; background-color: #f8f9fa;-webkit-print-color-adjust: exact !important;color-adjust: exact !important;print-color-adjust: exact !important;"></td>
+                            <td bgcolor="#f8f9fa" align="right" style="padding: 12px; text-align: right; font-family: 'Poppins', sans-serif; background-color: #f8f9fa;-webkit-print-color-adjust: exact !important;color-adjust: exact !important;print-color-adjust: exact !important;">
+                                <strong style="white-space: nowrap;">Total:</strong>
+                            </td>
+                            <td bgcolor="#f8f9fa" align="right" style="padding: 12px; text-align: right; font-family: 'Poppins', sans-serif; background-color: #f8f9fa;-webkit-print-color-adjust: exact !important;color-adjust: exact !important;print-color-adjust: exact !important;">@Model.Total€</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

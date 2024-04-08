@@ -1,0 +1,46 @@
+﻿@model SandraConfecciones.Models.Cliente
+
+@{
+    ViewData["Title"] = "Eliminar Cliente";
+}
+
+<div class="container">
+    <h2 class="text-center mt-4">Eliminar cliente</h2>
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Esta acción es irreversible</h4>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.Nombre)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Nombre)
+                </dd>
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.Apellido)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Apellido)
+                </dd>
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.Direccion)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Direccion)
+                </dd>
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.Telefono)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Telefono)
+                </dd>
+            </dl>
+            <form asp-action="Delete">
+                <input type="hidden" asp-for="ClienteId" />
+                <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+                <a asp-action="Index" class="btn btn-dark">Volver</a>
+            </form>
+        </div>
+    </div>
+</div>

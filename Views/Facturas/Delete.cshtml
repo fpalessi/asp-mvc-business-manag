@@ -1,0 +1,51 @@
+﻿@model SandraConfecciones.Models.Factura
+
+@{
+    ViewData["Title"] = "Eliminar Factura";
+}
+
+<div class="container">
+    <h2 class="text-center mt-4">Eliminar factura</h2>
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">
+                Esta acción es irreversible
+            </h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-3">
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+        <dt class = "col-sm-3">
+            @Html.DisplayNameFor(model => model.Total)
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.Total)
+        </dd>
+        <dt class = "col-sm-3">
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+        <dt class = "col-sm-3">
+            @Html.DisplayNameFor(model => model.Cliente)
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.Cliente.ClienteId)
+        </dd>
+    </dl>
+            <form asp-action="Delete">
+                <input type="hidden" asp-for="FacturaId" />
+                <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+                <a asp-action="Index" class="btn btn-dark">Volver</a>
+            </form>
+        </div>
+    
+
+</div>
+
+</div>
